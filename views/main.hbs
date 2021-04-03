@@ -1,0 +1,54 @@
+{{>head}}
+<section class="p-2 container">
+    {{!-- Headline --}}
+    <div class="conatiner">
+        <div class="heading py-2 text-center">
+            <h2 class="text-center">Node File Uploader</h2>
+            <p class="subtitles">Uplaod Images to the <strong>Server</strong></p>
+        </div>
+    </div>
+    {{!-- Input Feildrgb(226,3,122) --}}
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="py-3 px-5 border bg-light border-1 border-light shadow">
+                <form method="POST" action="/file/upload" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="file" class="text-muted form-label">
+                            <h4 class="text-center">Uplaod File Here</h4>
+                        </label>
+                        <input type="file" class="form-control" id="file" name="file" multiple>
+                        <div class="my-2 form-text">We'll never share your data with anyone else.</div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="w-50 my-1 btn btn-warning">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{!-- Show Images --}}
+    <section class="show-images mt-5">
+        <div class="row container px-5">
+            {{#each images}}
+            {{#each this}}
+            {{#if imageBased64}}
+            <div class="m-2 card shadow" style="width: 20rem;">
+                <img src="data:{{contentType}};base64,{{imageBased64}}" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">UI /UX Design</h5>
+                    <p class="card-text text-secondary text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.
+                        Blanditiis, veniam.
+                    </p>
+                    <div class="text-center">
+                        <a href="#" class="btn btn-info text-light">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+            {{/each}}
+        </div>
+    </section>
+</section>
+{{>foot}}
